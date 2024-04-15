@@ -1,5 +1,6 @@
 import { configDotenv } from "dotenv";
 configDotenv({ path: ".env" });
+
 import express from "express";
 import Stripe from "stripe";
 import bodyParser from "body-parser";
@@ -10,14 +11,16 @@ import * as falProxy from "@fal-ai/serverless-proxy/express";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const stripeSecretKey = process.env.REACT_APP_STRIPE_SCREAT_KEY;
+if (!stripeSecretKey) {
+  console.error('Stripe secret key is not set in environment variables.');
+  process.exit(1);
+}
+const stripe = new Stripe(stripeSecretKey);
 
-const stripe = new Stripe(
-  "sk_test_51LSq56SBthRp6nG0y9WnSfBHnB2RUbCjWqKylh4NZO9CPnNCcejLfBk1aNRWAHvM8kyTGOElErGW62E0N9bWNtfV00xRqzYgIg"
-);
 const app = express();
 
 // Middleware
