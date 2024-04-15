@@ -1,0 +1,41 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Art API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .endpoint { margin-bottom: 20px; }
+        .description { margin-top: 5px; }
+        pre { background-color: #f4f4f4; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Backend of Digital Art</h1>
+    <p>This API provides endpoints to generate digital art, initiate payments, and more. Below are the available endpoints and their descriptions:</p>
+
+    <div class="endpoint">
+        <h2>POST /digitalart/text-to-art</h2>
+        <p class="description">Generates digital art based on a text prompt and specified diffusion inference steps.</p>
+        <pre>{
+  "prompt": "A serene landscape with mountains in the background and a river in the foreground.",
+  "diffusionInferenceSteps": 1
+}</pre>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /payment</h2>
+        <p class="description">Initiates a payment session for purchasing digital art.</p>
+        <pre>{"token": "tok_visa"}</pre>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /paymentpro</h2>
+        <p class="description">Initiates a premium payment session for purchasing digital art.</p>
+        <pre>{"token": "tok_visa"}</pre>
+    </div>
+</body>
+</html>
